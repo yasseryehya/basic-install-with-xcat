@@ -27,6 +27,8 @@ basic unattended Centos8 ISO image installation with xCat
 
 # osimage definition
 - `copycds /tmp/CentOS-Stream-8-x86_64-20220513-dvd1.iso`
+- `genimage centos-stream8-x86_64-netboot-compute`
+- `packimage centos-stream8-x86_64-netboot-compute`
 
 # current site table values:
 - domain=cluster.com
@@ -37,12 +39,14 @@ basic unattended Centos8 ISO image installation with xCat
 # Initialize DHCP services
 - `chdef -t site dhcpinterfaces="ens160,virbr0"`
 
-# node definition and nodeset
+# node definition
 - `mkdef -t node -o cn1 arch=x86_64 mac="00:0C:29:16:54:EB" ip="192.168.121.170" netboot="xnba" groups="all"`
-- `genimage centos-stream8-x86_64-netboot-compute`
-- `packimage centos-stream8-x86_64-netboot-compute`
+
+# Hosts and DNS
 - `makehosts cn1`
 - `makedns -n		# was asked to disable SELINUX (was disabled already!)`
+
+# assign image definition to compute nodes
 - `nodeset cn1 osimage=centos-stream8-x86_64-netboot-compute`
 
 # create a new DHCP configuration file with the networks defined
