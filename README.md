@@ -66,11 +66,13 @@ nameserver 192.168.121.143
 - `genimage centos-stream8-x86_64-netboot-compute`
 - `packimage centos-stream8-x86_64-netboot-compute`
 
-# current site table values:
-- domain=cluster.com
-- forwarders=192.168.121.2
-- master=192.168.121.143
-- nameservers=192.168.121.143
+# some of the current site table values:
+```
+domain=cluster.com
+forwarders=192.168.121.2
+master=192.168.121.143
+nameservers=192.168.121.143
+```
 
 # Initialize DHCP services
 - `chdef -t site dhcpinterfaces="ens160,virbr0"`
