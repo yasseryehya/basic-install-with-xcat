@@ -5,6 +5,15 @@ basic unattended Centos8 ISO image installation with xCat
 - I coppied the iso image to `/tmp` on the management node
 - mounted the iso to `/mnt/iso/centos8` on the management node
 - created a yum repo file `/etc/yum.repos.d/centos8.repo`
+- contents of `centos8.repo`:
+```
+[centos8-appstream]
+name=Centos8 packages
+mirrorlist=http://mirrorlist.centos.org/?release=$stream&arch=$basearch&repo=AppStream&infra=$infra
+#baseurl=file:///mnt/iso/centos8/AppStream
+enabled=1
+gpgcheck=1
+```
 
 # Configure the Management Node
 - `hostnamectl set-hostname xcatmn.cluster.com`
