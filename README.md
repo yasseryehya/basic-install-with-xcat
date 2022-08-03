@@ -1,8 +1,12 @@
 # basic-install-with-xcat
-basic unattended Centos8 ISO image installation with xCat
+basic unattended Centos8 ISO image installation with xCat. the following steps are based on a diskless installation
+
+# Management node and ISO image
+- both MN OS and the ISO image are based on `CentOS-Stream-8-x86_64-20220513-dvd1.iso`
+- memory of the MN: 4 GB
 
 # Configure the Base OS Repository
-- I coppied the iso image to `/tmp` on the management node
+- coppied the iso image to `/tmp` on the management node
 - mounted the iso to `/mnt/iso/centos8` on the management node
 - created a yum repo file `/etc/yum.repos.d/centos8.repo`
 - contents of `centos8.repo`:
@@ -36,7 +40,7 @@ ONBOOT=yes
 
 IPADDR=192.168.121.143
 NETMASK=255.255.255.0
-GATEWAY=192.168.121.1
+GATEWAY=192.168.121.2
 PREFIX=24
 DNS1=192.168.121.143
 ```
@@ -58,7 +62,7 @@ nameserver 192.168.121.143
 - `source /etc/profile.d/xcat.sh`
 - `/tmp/go-xcat -x devel install`
 
-# configuring creds
+# configuring credentials to be used on the compute nodes
 - `chtab key=system passwd.username=root passwd.password=root`
 
 # osimage definition
@@ -91,3 +95,14 @@ nameservers=192.168.121.143
 - `makedhcp -n`
 --> I got this: No dynamic range specified for 192.168.121.0. If hardware discovery is being used, a dynamic range is required.
 - `makedhcp -a`
+
+# deployment
+- power on the compute node
+- OS installation starts on the memory (diskless) and login prompt appears
+- Issue when compute node had less than 2 GB of RAM. solved by using RAM >= 3 GB
+
+# backup xcat database
+storing a backup copy of xcat DB so it can be restored later if needed
+- `mkdir ~/Documents/xcat-backup`
+- `dumpxCATdb -p ~/Documents/xcat-backup`
+- restoring data can be done with `restorexCATdb -p <path_to_the_saved_database>`
