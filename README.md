@@ -106,3 +106,7 @@ storing a backup copy of xcat DB so it can be restored later if needed
 - `mkdir ~/Documents/xcat-backup`
 - `dumpxCATdb -p ~/Documents/xcat-backup`
 - restoring data can be done with `restorexCATdb -p <path_to_the_saved_database>`
+
+# references
+- DHCP install
+https://linuxhint.com/dhcp_server_centos8/
