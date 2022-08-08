@@ -88,13 +88,13 @@ nameservers=192.168.121.143
 - `makehosts cn1`
 - `makedns -n		# was asked to disable SELINUX (was disabled already!)`
 
-# assign image definition to compute nodes
-- `nodeset cn1 osimage=centos-stream8-x86_64-netboot-compute`
-
 # create a new DHCP configuration file with the networks defined
 - `makedhcp -n`
 --> I got this: No dynamic range specified for 192.168.121.0. If hardware discovery is being used, a dynamic range is required.
 - `makedhcp -a`
+
+# assign image definition to compute nodes
+- `nodeset cn1 osimage=centos-stream8-x86_64-netboot-compute`
 
 # deployment
 - power on the compute node
