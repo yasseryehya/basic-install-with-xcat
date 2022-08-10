@@ -107,6 +107,21 @@ storing a backup copy of xcat DB so it can be restored later if needed
 - `dumpxCATdb -p ~/Documents/xcat-backup`
 - restoring data can be done with `restorexCATdb -p <path_to_the_saved_database>`
 
+# postscripts
+- add the script to /install/postscript/
+- `vim /install/postscripts/{script-name}`
+- `chdef cn1 -p postscripts={script-name}`
+- the script should be run on the next boot of the compute node (diskless)
+- in case of dikfull installation:
+  - `updatenode cn2 -P`
+  - the previous command should run the script right away
+
+# parallel shell
+- `xdsh cn1,cn2 "touch /root/test-file"`
+
+# kickstart
+- todo
+
 # references
 - DHCP install
 https://linuxhint.com/dhcp_server_centos8/
