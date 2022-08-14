@@ -120,7 +120,7 @@ storing a backup copy of xcat DB so it can be restored later if needed
 - `xdsh cn1,cn2 "touch /root/test-file"`
 
 # kickstart
-- kickstart file is created in diskfull installtion case and we wiil find at `/install/autoinst/(node name)` and we can modify it.
+- kickstart file is created in diskfull installtion case and we wiil find at `/install/autoinst/{node_name}` and we can modify it.
 
 # references
 - DHCP install
