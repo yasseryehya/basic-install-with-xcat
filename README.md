@@ -101,6 +101,12 @@ nameservers=192.168.121.143
 - OS installation starts on the memory (diskless) and login prompt appears
 - Issue when compute node had less than 2 GB of RAM. solved by using RAM >= 3 GB
 
+# xcatprobe
+`xcatprobe osdeploy -n <node_range>`
+- osdeploy operating system provision process. Supports two modes - ‘Realtime monitor’ and ‘Replay history’.
+- Realtime monitor: This is a default. This tool with monitor provision state of the node. Trigger ‘Realtime monitor’ before rebooting target node to do provisioning.
+- Replay history: Used after provisioning is finished to probe the previously completed provisioning.
+
 # backup xcat database
 storing a backup copy of xcat DB so it can be restored later if needed
 - `mkdir ~/Documents/xcat-backup`
@@ -120,7 +126,7 @@ storing a backup copy of xcat DB so it can be restored later if needed
 - `xdsh cn1,cn2 "touch /root/test-file"`
 
 # kickstart
-- kickstart file is created in diskfull installtion case and we wiil find at `/install/autoinst/{node_name}` and we can modify it.
+- kickstart file is created in diskfull installtion case and we is at `/install/autoinst/{node_name}` and we can modify it.
 
 # references
 - DHCP install
